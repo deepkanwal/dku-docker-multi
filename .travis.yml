@@ -1,0 +1,25 @@
+sudo: require
+services:
+  - docker
+  
+before_install:
+  - docker build -t deepkanwal/react-test -f ./client/Dockerfile.dev ./client
+    # add additional tests here.
+
+script:
+  - docker run deepkanwal/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t deepkanwal/dku-multi-client ./client
+  - docker build -t deepkanwal/dku-multi-nginx ./nginx
+  - docker build -t deepkanwal/dku-multi-server ./server
+  - docker build -t deepkanwal/dku-multi-worker ./worker
+  
+  # Log in to the Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
+
+  # Take these images and push them to docker hub
+  - docker push deepkanwal/dku-multi-client 
+  - docker push deepkanwal/dku-multi-nginx
+  - docker push deepkanwal/dku-multi-server
+  - docker push deepkanwal/dku-multi-worker
