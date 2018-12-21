@@ -23,3 +23,16 @@ after_success:
   - docker push deepkanwal/dku-multi-nginx
   - docker push deepkanwal/dku-multi-server
   - docker push deepkanwal/dku-multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: dku-docker-multi
+  env: DkuMultiDocker-env 
+  bucket_name: elasticbeanstalk-us-east-1-381951348145
+  bucket_path: dku-docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET_KEY
