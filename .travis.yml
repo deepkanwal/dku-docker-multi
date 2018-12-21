@@ -27,7 +27,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: dku-docker-multi
+  app: dku-multi-docker
   env: DkuMultiDocker-env 
   bucket_name: elasticbeanstalk-us-east-1-381951348145
   bucket_path: dku-docker-multi
