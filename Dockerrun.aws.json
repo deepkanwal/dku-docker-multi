@@ -25,6 +25,7 @@
     {
       "name": "nginx",
       "image": "deepkanwal/dku-multi-nginx",
+      "hostname": "nginx",
       "essential": true,
       "memory": 128,
       "portMappings": [
