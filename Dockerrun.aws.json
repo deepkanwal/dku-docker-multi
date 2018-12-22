@@ -6,27 +6,27 @@
       "image": "deepkanwal/dku-multi-client",
       "hostname": "client",
       "essential": false,
-      "memory": 128
+      "memory": 256
     },
     {
       "name": "server",
       "image": "deepkanwal/dku-multi-server",
       "hostname": "api",
       "essential": false,
-      "memory": 128
+      "memory": 256
     },
     {
       "name": "worker",
       "image": "deepkanwal/dku-multi-worker",
       "hostname": "worker",
       "essential": false,
-      "memory": 128
+      "memory": 256
     },
     {
       "name": "nginx",
       "image": "deepkanwal/dku-multi-nginx",
       "essential": true,
-      "memory": 128,
+      "memory": 256,
       "portMappings": [
         {
           "hostPort": 80,
